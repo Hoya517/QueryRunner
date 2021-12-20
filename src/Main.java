@@ -1,4 +1,3 @@
-import common.dto.ExecuteQueryResDTO;
 import common.util.TextFileReader;
 import repository.JdbcRepository;
 
@@ -17,7 +16,7 @@ public class Main {
             if (textFileReader.isSelectQuery(query)) {
                 jdbcRepository.executeQuery(query).print();
             } else if (textFileReader.isUpdateQuery(query)) {
-//                jdbcRepository.executeUpdate(query).print();
+                jdbcRepository.executeUpdate(query).print();
             }
         }
     }

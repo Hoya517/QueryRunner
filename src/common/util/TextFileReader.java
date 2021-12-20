@@ -15,7 +15,7 @@ public class TextFileReader {
 
     public boolean isSelectQuery(String query) {
         String queryFirst= query.substring(0, query.indexOf(" ")).toUpperCase();
-        return queryFirst.equals(DML_SELECT) || queryFirst.equals("DESC");
+        return queryFirst.equals(DML_SELECT);
     }
 
     public boolean isUpdateQuery(String query) {
