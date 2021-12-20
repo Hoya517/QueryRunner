@@ -11,9 +11,6 @@ public class ExecuteQueryResDTO {
     private List<Map<String, String>> data;
     private Map<String, Integer> maxLength;
 
-    public ExecuteQueryResDTO() {
-    }
-
     public ExecuteQueryResDTO(List<String> columns, Map<String, Integer> maxLength) {
         this.columns = columns;
         this.maxLength = maxLength;
@@ -31,9 +28,6 @@ public class ExecuteQueryResDTO {
         return columns;
     }
 
-    public void setColumns(List<String> columns) {
-        this.columns = columns;
-    }
 
     public List<Map<String, String>> getData() {
         return data;
@@ -86,7 +80,6 @@ public class ExecuteQueryResDTO {
                 System.out.println();
                 System.out.print("|");
             }
-            String space = "";
             String key = data.get(i).keySet().iterator().next();
             Integer maxLength = getMaxLength().get(key);
             System.out.printf("  %s%s  |", data.get(i).get(key), this.setSpace(data.get(i).get(key), maxLength));
