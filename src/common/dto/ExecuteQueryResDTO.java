@@ -48,18 +48,23 @@ public class ExecuteQueryResDTO {
         // Query
         System.out.println("[Query :: " + query + "]");
 
+        setWidth("-");
+        System.out.println();
+
         // Table
         int size = columns.size();
         System.out.print("|");
-        for (String columName : columns) {
+        for (String column : columns) {
             String space = "";
-            Integer maxLength = getMaxLength().get(columName);
-            if (maxLength > columName.length()) {
-                space = this.setSpace(columName, maxLength);
+            Integer maxLength = getMaxLength().get(column);
+            if (maxLength > column.length()) {
+                space = this.addSpace(column, maxLength);
             }
-            System.out.printf("  %s%s  |", columName, space);
+            System.out.printf("  %s%s  |", column, space);
         }
         System.out.println();
+
+        setWidth("=");
 
         for (int i = 0; i < data.size(); i++) {
             if (i % size == 0) {
@@ -68,17 +73,40 @@ public class ExecuteQueryResDTO {
             }
             String key = data.get(i).keySet().iterator().next();
             Integer maxLength = getMaxLength().get(key);
-            System.out.printf("  %s%s  |", data.get(i).get(key), this.setSpace(data.get(i).get(key), maxLength));
+            System.out.printf("  %s%s  |", data.get(i).get(key), this.addSpace(data.get(i).get(key), maxLength));
         }
+
+        System.out.println();
+        setWidth("-");
+
     }
 
-    private String setSpace(String columName, Integer maxLength) {
+    private String addSpace(String columName, Integer maxLength) {
         StringBuilder space = new StringBuilder();
         int sub = maxLength - columName.length();
         for (int i = 0; i < sub; i++) {
             space.append(" ");
         }
         return space.toString();
+    }
+
+    private String addLine(Integer maxLength, String ch) {
+        StringBuilder line = new StringBuilder();
+        for (int i = 0; i < maxLength; i++) {
+            line.append(ch);
+        }
+        return line.toString();
+    }
+
+    private void setWidth(String ch) {
+        System.out.print(ch);
+        for (String column : columns) {
+            for (int i = 0; i < 5; i++) {
+                System.out.print(ch);
+            }
+            Integer maxLength = getMaxLength().get(column);
+            System.out.print(addLine(maxLength, ch));
+        }
     }
 
 }
