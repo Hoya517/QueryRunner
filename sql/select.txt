@@ -1,1 +1,1 @@
-desc test
+SELECT * FROM TEST
