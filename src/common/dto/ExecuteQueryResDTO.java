@@ -45,6 +45,8 @@ public class ExecuteQueryResDTO {
     }
 
     public void print() {
+        System.out.println();
+
         // Query
         System.out.println("[Query :: " + query + "]");
 
@@ -78,6 +80,8 @@ public class ExecuteQueryResDTO {
 
         System.out.println();
         setWidth("-");
+
+        System.out.println();
 
     }
 

@@ -30,10 +30,14 @@ public class ExecuteUpdateResDTO {
     }
 
     public void print() {
+        System.out.println();
+
         // Query
         System.out.println("[Query :: " + query + "]");
 
         // rowCoumt
         System.out.println("rowCount => " + rowCount);
+
+        System.out.println();
     }
 }
